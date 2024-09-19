@@ -1,0 +1,32 @@
+.home-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0073e6;
+  padding: 10px;
+  color: white;
+}
+
+.nav-links button {
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.home-main {
+  margin-top: 20px;
+}
+
+.intro-section, .features-section {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: square;
+}
