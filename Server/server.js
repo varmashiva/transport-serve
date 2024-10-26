@@ -1,40 +1,35 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const router = require('./routes/routes');
+const repairRoutes = require('./routes/routes'); // Ensure this path is correct
 
 const app = express();
 const PORT = 3000;
-npm 
 
+// Middleware
 app.use(express.json());
-
-console.log('PORT:', PORT);
-
-
 app.use(
   cors({
-    origin: 'http://localhost:5173', 
-    credentials: true,
+    origin: 'http://localhost:5173', // Adjust this if your frontend is on a different port
   })
 );
 
+// Register routes with the '/api' prefix
+app.use('/api', repairRoutes);
 
-app.use('/auth', router);
-
+// Connect to MongoDB
 mongoose
-  .connect("mongodb+srv://karthikvarmachekuri555:Kathik#555@cluster0.y7cmc.mongodb.net/?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
-  });
+  .connect(
+    'mongodb+srv://shivavarma336:shiva123@cluster0.h97ip.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+    {
+      useNewUrlParser: true, // Deprecated but still works for now
+      useUnifiedTopology: true, // Deprecated but still works for now
+    }
+  )
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err.message));
 
-
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server Started on PORT ${PORT}`);
+  console.log(`Server started on PORT ${PORT}`);
 });
