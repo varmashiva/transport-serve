@@ -10,7 +10,7 @@ const DriverDashboard = () => {
     // Function to fetch repair requests
     const fetchRequests = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/driver-requests');
+            const response = await axios.get('https://transport-serve.onrender.com/driver-requests');
             setRequests(response.data);
         } catch (error) {
             console.error('Error fetching requests', error);
@@ -24,7 +24,7 @@ const DriverDashboard = () => {
     const handleSubmitRequest = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/request-repair', {
+            const response = await axios.post('https://transport-serve.onrender.com/request-repair', {
                 busNumber,
                 description: issue,
             });
@@ -39,7 +39,7 @@ const DriverDashboard = () => {
 
     const handleApproveRequest = async (requestId) => {
         try {
-            const response = await axios.post(`http://localhost:3000/api/approve-request/${requestId}`);
+            const response = await axios.post(`https://transport-serve.onrender.com/approve-request/${requestId}`);
             console.log('Request approved', response.data);
             fetchRequests(); // Refresh requests after approval
         } catch (error) {

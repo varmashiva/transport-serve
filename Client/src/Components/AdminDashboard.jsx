@@ -9,7 +9,7 @@ const AdminDashboard = () => {
     // Function to fetch all pending requests
     const fetchRequests = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/admin-requests');
+            const response = await axios.get('https://transport-serve.onrender.com/admin-requests');
             setRequests(response.data);
         } catch (error) {
             console.error('Error fetching requests', error);
@@ -22,7 +22,7 @@ const AdminDashboard = () => {
 
     const handleApproveRequest = async (id) => {
         try {
-            await axios.post(`http://localhost:3000/api/approve-request/${id}`);
+            await axios.post(`https://transport-serve.onrender.com/approve-request/${id}`);
             fetchRequests(); // Refresh requests after approval
         } catch (error) {
             console.error('Error approving request', error);
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
 
     const handleRejectRequest = async (id) => {
         try {
-            await axios.post(`http://localhost:3000/api/reject-request/${id}`);
+            await axios.post(`https://transport-serve.onrender.com/reject-request/${id}`);
             fetchRequests(); // Refresh requests after rejection
         } catch (error) {
             console.error('Error rejecting request', error);
